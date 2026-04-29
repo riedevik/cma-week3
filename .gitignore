@@ -1,0 +1,5 @@
+*.tif
+Data/
+.ipynb_checkpoints/
+*.html
+*_files/
