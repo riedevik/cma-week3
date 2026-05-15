@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Viktoria Rieder">
+<meta name="dcterms.date" content="2026-05-15">
+
+<title>Week 5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="Week_5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Week_5_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Week_5_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Week_5_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Week_5_files/libs/quarto-html/popper.min.js"></script>
+<script src="Week_5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Week_5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Week_5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Week_5_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Week_5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Week_5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Week_5_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#demo-r-functions" id="toc-demo-r-functions" class="nav-link active" data-scroll-target="#demo-r-functions"><span class="header-section-number">1</span> Demo: R Functions</a></li>
+  <li><a href="#tasks-and-inputs" id="toc-tasks-and-inputs" class="nav-link" data-scroll-target="#tasks-and-inputs"><span class="header-section-number">2</span> Tasks and inputs</a>
+  <ul>
+  <li><a href="#task-1-write-your-own-functions" id="toc-task-1-write-your-own-functions" class="nav-link" data-scroll-target="#task-1-write-your-own-functions"><span class="header-section-number">2.1</span> Task 1: Write your own functions</a></li>
+  <li><a href="#task-2-prepare-analysis" id="toc-task-2-prepare-analysis" class="nav-link" data-scroll-target="#task-2-prepare-analysis"><span class="header-section-number">2.2</span> Task 2: Prepare Analysis</a></li>
+  <li><a href="#task-3-create-join-key" id="toc-task-3-create-join-key" class="nav-link" data-scroll-target="#task-3-create-join-key"><span class="header-section-number">2.3</span> Task 3: Create Join Key</a></li>
+  <li><a href="#task-4-measuring-distance-at-concurrent-locations" id="toc-task-4-measuring-distance-at-concurrent-locations" class="nav-link" data-scroll-target="#task-4-measuring-distance-at-concurrent-locations"><span class="header-section-number">2.4</span> Task 4: Measuring distance at concurrent locations</a>
+  <ul class="collapse">
+  <li><a href="#split-data-frames" id="toc-split-data-frames" class="nav-link" data-scroll-target="#split-data-frames"><span class="header-section-number">2.4.1</span> Split Data-Frames</a></li>
+  <li><a href="#join-datasets" id="toc-join-datasets" class="nav-link" data-scroll-target="#join-datasets"><span class="header-section-number">2.4.2</span> Join Datasets</a></li>
+  <li><a href="#calculate-euclidean-distances" id="toc-calculate-euclidean-distances" class="nav-link" data-scroll-target="#calculate-euclidean-distances"><span class="header-section-number">2.4.3</span> Calculate Euclidean distances</a></li>
+  <li><a href="#determine-meet" id="toc-determine-meet" class="nav-link" data-scroll-target="#determine-meet"><span class="header-section-number">2.4.4</span> Determine <em>meet</em></a></li>
+  </ul></li>
+  <li><a href="#task-5-visualize-data" id="toc-task-5-visualize-data" class="nav-link" data-scroll-target="#task-5-visualize-data"><span class="header-section-number">2.5</span> Task 5: Visualize data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Viktoria Rieder </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 15, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="demo-r-functions" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Demo: R Functions</h1>
+<p>Up to now, we have used a variety of different functions designed by other developers. Sometimes we need to execute an operation multiple times, and most often it is reasonable to write a function to do so. Whenever you have copied and pasted a block of code more than twice, you should consider writing a function (Wickham et al.&nbsp;2023).</p>
+<p>The first step in writing a function, is picking a name and assigning <code>&lt;- function(){}</code> to it.</p>
+<div id="3a5a7c00-0be0-4a46-baec-d78f6e3d9bcf" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>() {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>To run the function, we have to call the assigned name with the brackets. The function <code>testfun</code> gives no output, which is why we get <code>NULL</code> back.</p>
+<div id="c9643593-3062-4834-b909-1f15c556d91f" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<div id="3b6be758-9514-4676-a464-219e5db150a7" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(testfun)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+'function'
+</div>
+</div>
+<p>To make the function actually do something, we need to specify what should be done within the curly brackets <code>{}</code>. The following function always prints the same statement and accepts no input values:</p>
+<div id="c5677031-93a4-4a36-9b2b-a16c392d10b8" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"this function does nothing"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "this function does nothing"</code></pre>
+</div>
+</div>
+<p>If we want the function to accept some input values, we have to define them within the round brackets. For example, I specify a variable named <code>sometext</code> and can call this variable within the execution.</p>
+<div id="ae89ae7b-be16-4fb3-94ab-5e734a5dcae6" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(sometext) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(sometext)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>(<span class="at">sometext =</span> <span class="st">"this function does slightly more, but still not much"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "this function does slightly more, but still not much"</code></pre>
+</div>
+</div>
+<p>Let’s take a more practical example. Say we want a function that calculates our age if provided with the date of our birthday. We can use <code>Sys.time()</code> to provide today’s date and <code>difftime()</code> to calculate the time difference between today and our birthday.</p>
+<div id="5e18a822-8539-4644-9f37-146d6d222a0b" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, output_unit) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    today <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            birthday, <span class="at">units =</span> output_unit)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="at">birthday =</span> <span class="st">"1997-04-23"</span>, <span class="at">output_unit =</span> <span class="st">"days"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>As we already know from using other functions, if we declare our variables in the order that we initially listed them, we do not need to specify the parameters (no need of <code>birthday =</code> and <code>output_unit =</code>).</p>
+<div id="b846b5f9-7b90-49e9-8732-fc7d7a9151fb" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">"1997-04-23"</span>, <span class="st">"days"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of 10612.44 days</code></pre>
+</div>
+</div>
+<p>If we want any of our parameters to have default value, we can assign an initial value to the parameter when declaring the variables within the round brackets.</p>
+<div id="828a80a6-d27b-45e9-9dae-7cdb8affd318" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, <span class="at">output_unit =</span> <span class="st">"days"</span>) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), birthday, <span class="at">units =</span> output_unit)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if not stated otherwise, our function uses the unit "days"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">"1997-04-23"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of 10612.45 days</code></pre>
+</div>
+</div>
+<div id="7f9b477c-f157-4f26-ada4-19a26e6abef3" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can still overwrite units</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">"1997-04-23"</span>, <span class="st">"hours"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of 254698.5 hours</code></pre>
+</div>
+</div>
+<p>All you need to do now is run execute the function deceleration <code>(myage &lt;- function... etc.)</code> at the beginning of your script, and you can use the function for your entire R session.</p>
+<p><strong>Important</strong>: Always try to make your function self sufficient: Only use objects within your function that are either passed as function arguments or created within the funtion. See more on this topic <a href="https://raps-with-r.dev/fprog.html#referentially-transparent-and-pure-functions">here</a>, in the online version of the book by Rodrigues (2023).</p>
+</section>
+<section id="tasks-and-inputs" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Tasks and inputs</h1>
+<section id="task-1-write-your-own-functions" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="task-1-write-your-own-functions"><span class="header-section-number">2.1</span> Task 1: Write your own functions</h2>
+<p>Create the following two functions:</p>
+<div id="ad3e5966-51ce-4c0b-ad13-70a1d40774bc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="22">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IRdisplay)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">display_png</span>(<span class="at">file =</span> <span class="st">"Data/formeln.png"</span>, <span class="at">width =</span> <span class="dv">600</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Week_5_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="027ac068-1103-4a28-87e9-b1c9f0315d35" class="cell" data-execution_count="55">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(weight, height){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>}</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="dv">60</span>, <span class="fl">1.72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+20.2812330989724
+</div>
+</div>
+<div id="e3a6ab26-6332-4b6a-ac08-4dad1742687b" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>farenheight <span class="ot">&lt;-</span> <span class="cf">function</span>(celcius){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (celcius <span class="sc">*</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span>}</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">farenheight</span>(<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+86
+</div>
+</div>
+<div id="1412602a-23a0-4113-a8e6-f8673f9ca7e8" class="cell" data-execution_count="35">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>euclidean_distance <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2, y1, y2){</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>((x2<span class="sc">-</span>x1)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (y2<span class="sc">-</span>y1)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">euclidean_distance</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">23</span>, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+4.24264068711928
+</div>
+</div>
+</section>
+<section id="task-2-prepare-analysis" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="task-2-prepare-analysis"><span class="header-section-number">2.2</span> Task 2: Prepare Analysis</h2>
+<p>In the next tasks we will look for <strong>“meet” patterns</strong> in our wild boar data. To simplify this, we will only use a subset of our wild boar data: The individuals Rosa and Sabi for the timespan 01.04.2015 - 15.04.2015. Use the dataset <code>wildschwein_BE_2056.csv</code> (on moodle). Import the csv as a data.frame and filter it with the aforementioned criteria. You do not need to convert the data.frame to an sf object.</p>
+<div id="2540af7d-babd-4447-9c10-05d0ec2d911d" class="cell" data-execution_count="51">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="e3d6de68-05f9-435c-9143-96d93803ad55" class="cell" data-execution_count="68">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"Data/wildschwein_BE_2056.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">"Rosa"</span> <span class="sc">|</span> TierName <span class="sc">==</span> <span class="st">"Sabi"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span>(DatetimeUTC) <span class="sc">&gt;=</span> <span class="st">"2015-04-01"</span> <span class="sc">&amp;</span> <span class="fu">date</span>(DatetimeUTC) <span class="sc">&lt;=</span> <span class="st">"2015-04-15"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(data<span class="sc">$</span>TierName)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(data<span class="sc">$</span>DatetimeUTC)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(data<span class="sc">$</span>DatetimeUTC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC</th>
+<th data-quarto-table-cell-role="th" scope="col">E</th>
+<th data-quarto-table-cell-role="th" scope="col">N</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:00:11</td>
+<td>2570372</td>
+<td>1205313</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:15:22</td>
+<td>2570309</td>
+<td>1205262</td>
+</tr>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570326</td>
+<td>1205248</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:45:16</td>
+<td>2570315</td>
+<td>1205242</td>
+</tr>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570323</td>
+<td>1205237</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:15:17</td>
+<td>2570320</td>
+<td>1205247</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'Sabi'</li><li>'Rosa'</li></ol>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>[1] "2015-04-01 00:00:10 UTC"</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>[1] "2015-04-15 23:47:56 UTC"</code></pre>
+</div>
+</div>
+</section>
+<section id="task-3-create-join-key" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="task-3-create-join-key"><span class="header-section-number">2.3</span> Task 3: Create Join Key</h2>
+<p>Have a look at your dataset. You will notice that samples are taken at every full hour, quarter past, half past and quarter to. <strong>The sampling time is usually off by a couple of seconds</strong>.</p>
+<p>To compare Rosa and Sabi’s locations, we first need to <strong>match the two animals temporally</strong>. For that we can use a <code>join</code>, but <strong>need identical time stamps to serve as a join key</strong>. We therefore need to slightly adjust our time stamps to a common, concurrent interval.</p>
+<p>The task is therfore to round the minutes of DatetimeUTC to a multiple of 15 (00, 15, 30,45) and store the values in a new <code>column1</code>. You can use the lubridate function <code>round_date()</code> for this. See the examples <a href="https://lubridate.tidyverse.org/reference/round_date.html">here</a> to see how this goes.</p>
+<div id="65151a63-e725-4684-867f-0528fb3c8aa6" class="cell" data-execution_count="69">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>column1 <span class="ot">&lt;-</span> <span class="fu">round_date</span>(data<span class="sc">$</span>DatetimeUTC, <span class="st">"15 mins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="e08fa424-0d3f-4177-ae79-891cb6bb8ff8" class="cell" data-execution_count="70">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 7</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC</th>
+<th data-quarto-table-cell-role="th" scope="col">E</th>
+<th data-quarto-table-cell-role="th" scope="col">N</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:00:11</td>
+<td>2570372</td>
+<td>1205313</td>
+<td>2015-04-01 00:00:00</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:15:22</td>
+<td>2570309</td>
+<td>1205262</td>
+<td>2015-04-01 00:15:00</td>
+</tr>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570326</td>
+<td>1205248</td>
+<td>2015-04-01 00:30:00</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:45:16</td>
+<td>2570315</td>
+<td>1205242</td>
+<td>2015-04-01 00:45:00</td>
+</tr>
+<tr class="odd">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570323</td>
+<td>1205237</td>
+<td>2015-04-01 01:00:00</td>
+</tr>
+<tr class="even">
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:15:17</td>
+<td>2570320</td>
+<td>1205247</td>
+<td>2015-04-01 01:15:00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="task-4-measuring-distance-at-concurrent-locations" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="task-4-measuring-distance-at-concurrent-locations"><span class="header-section-number">2.4</span> Task 4: Measuring distance at concurrent locations</h2>
+<p>To measure the distance between concurrent locations, we need to follow the following steps.</p>
+<ol type="1">
+<li>Split the <code>wildschwein_filter</code> object into <strong>one data.frame per animal</strong></li>
+<li><strong>Join these datasets</strong> by the new Datetime column created in the last task. The joined observations are temporally close.</li>
+<li>In the joined dataset, <strong>calculate Euclidean distances</strong> between concurrent observations and store the values in a new column</li>
+<li><strong>Use a reasonable threshold on distance</strong> to determine if the animals are also spatially close enough to constitute a meet (we use 100 meters). Store this Boolean information (TRUE/FALSE) in a new column</li>
+</ol>
+<section id="split-data-frames" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="split-data-frames"><span class="header-section-number">2.4.1</span> Split Data-Frames</h3>
+<div id="5ae87be0-efa6-4c4b-9c59-fd063ffed6f0" class="cell" data-execution_count="71">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rosa <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">"Rosa"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">"Sabi"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="d4115d21-5ecc-4f09-80be-e66644c15f0a" class="cell" data-execution_count="72">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rosa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 7</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC</th>
+<th data-quarto-table-cell-role="th" scope="col">E</th>
+<th data-quarto-table-cell-role="th" scope="col">N</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:00:10</td>
+<td>2570823</td>
+<td>1204800</td>
+<td>2015-04-01 00:00:00</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:15:14</td>
+<td>2570831</td>
+<td>1204794</td>
+<td>2015-04-01 00:15:00</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570842</td>
+<td>1204796</td>
+<td>2015-04-01 00:30:00</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:45:17</td>
+<td>2570820</td>
+<td>1204803</td>
+<td>2015-04-01 00:45:00</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570829</td>
+<td>1204787</td>
+<td>2015-04-01 01:00:00</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:15:06</td>
+<td>2570831</td>
+<td>1204767</td>
+<td>2015-04-01 01:15:00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="join-datasets" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="join-datasets"><span class="header-section-number">2.4.2</span> Join Datasets</h3>
+<div id="dd2f0eda-45fe-49f7-8c81-abef18769219" class="cell" data-execution_count="73">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data_joined <span class="ot">&lt;-</span> <span class="fu">full_join</span>(rosa, sabi, <span class="at">by =</span> <span class="st">"column1"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">".rosa"</span>, <span class="st">".sabi"</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 13</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">E.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">N.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+<th data-quarto-table-cell-role="th" scope="col">TierID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">E.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">N.sabi</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:00:10</td>
+<td>2570823</td>
+<td>1204800</td>
+<td>2015-04-01 00:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:00:11</td>
+<td>2570372</td>
+<td>1205313</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:15:14</td>
+<td>2570831</td>
+<td>1204794</td>
+<td>2015-04-01 00:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:15:22</td>
+<td>2570309</td>
+<td>1205262</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570842</td>
+<td>1204796</td>
+<td>2015-04-01 00:30:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570326</td>
+<td>1205248</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:45:17</td>
+<td>2570820</td>
+<td>1204803</td>
+<td>2015-04-01 00:45:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:45:16</td>
+<td>2570315</td>
+<td>1205242</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570829</td>
+<td>1204787</td>
+<td>2015-04-01 01:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570323</td>
+<td>1205237</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:15:06</td>
+<td>2570831</td>
+<td>1204767</td>
+<td>2015-04-01 01:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:15:17</td>
+<td>2570320</td>
+<td>1205247</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="calculate-euclidean-distances" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="calculate-euclidean-distances"><span class="header-section-number">2.4.3</span> Calculate Euclidean distances</h3>
+<p>In the joined dataset, calculate Euclidean distances between concurrent observations and store the values in a new column</p>
+<p>–&gt; ich habe ja eine Funktion <code>euclidean_distance</code> erstellt!!</p>
+<div id="fa7be9cf-2ef6-475a-bd73-db9f70c58cc8" class="cell" data-execution_count="77">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data_euc_dist <span class="ot">&lt;-</span> <span class="fu">mutate</span>(data_joined, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">Euclidean_distance =</span> <span class="fu">euclidean_distance</span>(E.rosa, E.sabi, N.rosa, N.sabi))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_euc_dist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 14</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">E.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">N.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+<th data-quarto-table-cell-role="th" scope="col">TierID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">E.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">N.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">Euclidean_distance</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:00:10</td>
+<td>2570823</td>
+<td>1204800</td>
+<td>2015-04-01 00:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:00:11</td>
+<td>2570372</td>
+<td>1205313</td>
+<td>682.8943</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:15:14</td>
+<td>2570831</td>
+<td>1204794</td>
+<td>2015-04-01 00:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:15:22</td>
+<td>2570309</td>
+<td>1205262</td>
+<td>700.9568</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570842</td>
+<td>1204796</td>
+<td>2015-04-01 00:30:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570326</td>
+<td>1205248</td>
+<td>685.8371</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:45:17</td>
+<td>2570820</td>
+<td>1204803</td>
+<td>2015-04-01 00:45:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:45:16</td>
+<td>2570315</td>
+<td>1205242</td>
+<td>669.1526</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570829</td>
+<td>1204787</td>
+<td>2015-04-01 01:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570323</td>
+<td>1205237</td>
+<td>676.5464</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:15:06</td>
+<td>2570831</td>
+<td>1204767</td>
+<td>2015-04-01 01:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:15:17</td>
+<td>2570320</td>
+<td>1205247</td>
+<td>701.6919</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="determine-meet" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="determine-meet"><span class="header-section-number">2.4.4</span> Determine <em>meet</em></h3>
+<p>Use a reasonable threshold on distance to determine if the animals are also spatially close enough to constitute a meet (we use <strong>100 meters</strong>). Store this Boolean information (<code>TRUE/FALSE</code>) in a new column</p>
+<div id="8379198d-a829-4b40-931b-72ef18d7e64a" class="cell" data-execution_count="78">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data_euc_dist <span class="ot">&lt;-</span> data_euc_dist <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">meet =</span> Euclidean_distance <span class="sc">&lt;=</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="a5f4f45d-ecb8-48b1-86fc-44c69f95125e" class="cell" data-execution_count="79">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_euc_dist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 15</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">E.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">N.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+<th data-quarto-table-cell-role="th" scope="col">TierID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">E.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">N.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">Euclidean_distance</th>
+<th data-quarto-table-cell-role="th" scope="col">meet</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:00:10</td>
+<td>2570823</td>
+<td>1204800</td>
+<td>2015-04-01 00:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:00:11</td>
+<td>2570372</td>
+<td>1205313</td>
+<td>682.8943</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:15:14</td>
+<td>2570831</td>
+<td>1204794</td>
+<td>2015-04-01 00:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:15:22</td>
+<td>2570309</td>
+<td>1205262</td>
+<td>700.9568</td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570842</td>
+<td>1204796</td>
+<td>2015-04-01 00:30:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:30:11</td>
+<td>2570326</td>
+<td>1205248</td>
+<td>685.8371</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 00:45:17</td>
+<td>2570820</td>
+<td>1204803</td>
+<td>2015-04-01 00:45:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 00:45:16</td>
+<td>2570315</td>
+<td>1205242</td>
+<td>669.1526</td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570829</td>
+<td>1204787</td>
+<td>2015-04-01 01:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:00:44</td>
+<td>2570323</td>
+<td>1205237</td>
+<td>676.5464</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-01 01:15:06</td>
+<td>2570831</td>
+<td>1204767</td>
+<td>2015-04-01 01:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-01 01:15:17</td>
+<td>2570320</td>
+<td>1205247</td>
+<td>701.6919</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="7bf21add-f952-4149-991d-1818c0ff7201" class="cell" data-execution_count="112">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_meets <span class="ot">&lt;-</span> data_euc_dist <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(meet <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="8c878abb-cf8d-4f64-beaa-1a6d5a59ce93" class="cell" data-execution_count="113">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_meets)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>A tibble: 6 × 15</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">TierID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">E.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">N.rosa</th>
+<th data-quarto-table-cell-role="th" scope="col">column1</th>
+<th data-quarto-table-cell-role="th" scope="col">TierID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">TierName.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">CollarID.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">DatetimeUTC.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">E.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">N.sabi</th>
+<th data-quarto-table-cell-role="th" scope="col">Euclidean_distance</th>
+<th data-quarto-table-cell-role="th" scope="col">meet</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dttm&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-02 04:45:15</td>
+<td>2570399</td>
+<td>1205393</td>
+<td>2015-04-02 04:45:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-02 04:45:16</td>
+<td>2570422</td>
+<td>1205393</td>
+<td>23.56397</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-02 05:00:12</td>
+<td>2570395</td>
+<td>1205393</td>
+<td>2015-04-02 05:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-02 05:00:11</td>
+<td>2570387</td>
+<td>1205381</td>
+<td>14.16954</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-02 18:00:17</td>
+<td>2570396</td>
+<td>1205388</td>
+<td>2015-04-02 18:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-02 18:00:15</td>
+<td>2570368</td>
+<td>1205370</td>
+<td>33.20166</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-02 18:30:13</td>
+<td>2570350</td>
+<td>1205396</td>
+<td>2015-04-02 18:30:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-02 18:30:23</td>
+<td>2570409</td>
+<td>1205318</td>
+<td>97.62235</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-03 04:00:15</td>
+<td>2570394</td>
+<td>1205391</td>
+<td>2015-04-03 04:00:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-03 04:00:13</td>
+<td>2570298</td>
+<td>1205391</td>
+<td>95.87161</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>016A</td>
+<td>Rosa</td>
+<td>13972</td>
+<td>2015-04-03 04:15:10</td>
+<td>2570395</td>
+<td>1205397</td>
+<td>2015-04-03 04:15:00</td>
+<td>002A</td>
+<td>Sabi</td>
+<td>12275</td>
+<td>2015-04-03 04:15:09</td>
+<td>2570302</td>
+<td>1205386</td>
+<td>93.38390</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="task-5-visualize-data" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="task-5-visualize-data"><span class="header-section-number">2.5</span> Task 5: Visualize data</h2>
+<p>Now, visualize the meets spatially in a way that you think reasonable. For example in the plot as shows below. To produce this plot we:</p>
+<ul>
+<li>Used the individual dataframes from rosa and sabi (from the previous task)</li>
+<li>Used the joined dataset (also from the previous task), filtered to only the meets</li>
+<li>Manually changed the x and y axis limits</li>
+</ul>
+<div id="fb7f0b2f-6bf7-43bc-a74d-33665885f528" class="cell" data-execution_count="137">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotgrösse festlegen</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width =</span> <span class="dv">10</span>, <span class="at">repr.plot.height =</span> <span class="dv">6</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Regular locations</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> data_euc_dist, <span class="fu">aes</span>(<span class="at">x =</span> E.rosa, <span class="at">y =</span> N.rosa, <span class="at">color =</span> <span class="st">"rosa"</span>), <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> data_euc_dist, <span class="fu">aes</span>(<span class="at">x =</span> E.sabi, <span class="at">y =</span> N.sabi, <span class="at">color =</span> <span class="st">"sabi"</span>), <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Meets</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> data_meets, <span class="fu">aes</span>(<span class="at">x =</span> E.rosa, <span class="at">y =</span> N.rosa, <span class="at">fill =</span> <span class="st">"rosa"</span>),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> data_meets, <span class="fu">aes</span>(<span class="at">x =</span> E.sabi, <span class="at">y =</span> N.sabi, <span class="at">fill =</span> <span class="st">"sabi"</span>),</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Farben definieren</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Regular Locations"</span>,</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"rosa"</span> <span class="ot">=</span> <span class="st">"#ff4d4d"</span>, <span class="st">"sabi"</span> <span class="ot">=</span> <span class="st">"#00eaff"</span>)) <span class="sc">+</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Meets"</span>,</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"rosa"</span> <span class="ot">=</span> <span class="st">"#b30000"</span>, <span class="st">"sabi"</span> <span class="ot">=</span> <span class="st">"#00bbcc"</span>)) <span class="sc">+</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Achsenbeschriftung</span></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"E"</span>,</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"N"</span>) <span class="sc">+</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Week_5_files/figure-html/cell-27-output-1.png" width="600" height="360" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
